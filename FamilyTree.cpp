@@ -83,7 +83,8 @@ Tree &Tree::addMother(string name, string mother) {
                         temp+="mother";
                         ptr->mother->rel = temp;
                   }
-                  return *ptr;
+                  Tree* answer=this;
+                  return *answer;
             }
 		else { throw runtime_error(name +" already have a mother !"); }
 	}
