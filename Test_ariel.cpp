@@ -1,4 +1,3 @@
- 
 #include "doctest.h"
 #include "FamilyTree.hpp"
 
@@ -133,13 +132,11 @@ TEST_CASE("Strange string Tree case") {
 	CHECK(T.relation("AvA") == string("grandmother"));
 	CHECK(T.relation("le0") == string("great-grandfather"));
 	CHECK(T.relation("aB3igaIl") == string("great-grandmother"));
-
     CHECK(T.relation("fEli XX") == string("unrelated"));
 	CHECK(T.relation("&miA") == string("unrelated"));
 	CHECK(T.relation("leo") == string("unrelated"));
 	CHECK(T.relation(" ") == string("unrelated"));
 	CHECK(T.relation("  osC7ar") == string("unrelated"));
-
 	// Find test case
 	CHECK(T.find("father") == string("fEliXX"));
 	CHECK(T.find("mother") == string("#miA"));
@@ -147,7 +144,6 @@ TEST_CASE("Strange string Tree case") {
 	CHECK((T.find("grandmother") == string("IRis-") || T.find("grandmother") == string("AvA")));
 	CHECK(T.find("great-grandfather") == string("le0"));
 	CHECK(T.find("great-grandmother") == string("aB3igaIl"));
-
 	CHECK_THROWS(T.find("grandfatrher"));
 	CHECK_THROWS(T.find("great"));
 	CHECK_THROWS(T.find(" "));
@@ -156,10 +152,8 @@ TEST_CASE("Strange string Tree case") {
 	CHECK_THROWS(T.find("great,great,grandmother"));
 	CHECK_THROWS(T.find("great?grandmother"));
 	CHECK_THROWS(T.find("great grandmother"));
-
 	// Remove test case
 	CHECK_THROWS(T.remove("OliVeR$"));
-
 	T.remove("aB3igaIl");
 	CHECK_THROWS(T.find("great-grandmother"));
 	T.addMother("IRis-", "aB3igaIl");
@@ -177,7 +171,6 @@ TEST_CASE("Strange string Tree case") {
 	CHECK_THROWS(T.find("father"));
 	CHECK_THROWS(T.find("mother"));
 }
-
 TEST_CASE("Empty string Tree case") {  
 	// Add test case
 	family::Tree T (" ");
@@ -189,30 +182,24 @@ TEST_CASE("Empty string Tree case") {
 	T.addMother("  ", "     ");
 	CHECK_THROWS(T.addFather("  ", "         "));
 	CHECK_THROWS(T.addMother("  ", "Rut  i"));
-
 	// Relation test case
 	CHECK(T.relation("  ") == string("father"));
 	CHECK(T.relation("   ") == string("mother"));
 	CHECK(T.relation("    ") == string("grandfather"));
 	CHECK(T.relation("     ") == string("grandmother"));
-
     CHECK(T.relation("fli XX") == string("unrelated"));
 	CHECK(T.relation("leo") == string("unrelated"));
 	CHECK(T.relation("  osC7ar") == string("unrelated"));
-
 	// Find test case
 	CHECK(T.find("father") == string("  "));
 	CHECK(T.find("mother") == string("   "));
 	CHECK(T.find("grandfather") == string("    "));
 	CHECK(T.find("grandmother") == string("     "));
-
 	CHECK_THROWS(T.find("  "));
 	CHECK_THROWS(T.find("great"));
 	CHECK_THROWS(T.find("   great"));
-
 	// Remove test case
 	CHECK_THROWS(T.remove(" "));
-
 	T.remove("     ");
 	CHECK_THROWS(T.find("grandmother"));
 	T.remove("  ");
