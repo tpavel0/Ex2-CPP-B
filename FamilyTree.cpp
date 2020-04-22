@@ -56,7 +56,8 @@ Tree &Tree::addFather(string name, string father){
                        temp+="father";
                        ptr->father->rel = temp;
                   }
-                  return *ptr;
+                  Tree* answer=this;
+                  return *answer;
             }
 		else { throw runtime_error(name +" already have a father !"); }
 	}
