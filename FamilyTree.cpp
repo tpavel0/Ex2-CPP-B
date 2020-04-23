@@ -43,7 +43,6 @@ Tree &Tree::addFather(string name, string father){
             if (ptr->father == nullptr){
                   ptr->father = new Tree(father);
                   ptr->father->son = ptr;
-                  //if's for the relation
                   if (ptr->rel == "me") ptr->father->rel = "father";
                   else if ((ptr->rel == "father") || (ptr->rel == "mother") )
                             ptr->father->rel = "grandfather";
@@ -59,7 +58,7 @@ Tree &Tree::addFather(string name, string father){
                   Tree* answer=this;
                   return *answer;
             }
-		else { throw runtime_error(name +" already have a father !"); }
+		else { throw runtime_error(name +" already have father !"); }
 	}
 	else{ throw runtime_error(name+" - not in the tree"); }
 }
@@ -70,7 +69,6 @@ Tree &Tree::addMother(string name, string mother) {
             if (ptr->mother == nullptr){
                   ptr->mother = new Tree(mother);
                   ptr->mother->son = ptr;
-                  //if's for the relation
                   if (ptr->rel == "me") ptr->mother->rel = "mother";
                   else if ((ptr->rel == "mother") || (ptr->rel == "father") )
                             ptr->mother->rel = "grandmother";
@@ -86,7 +84,7 @@ Tree &Tree::addMother(string name, string mother) {
                   Tree* answer=this;
                   return *answer;
             }
-		else { throw runtime_error(name +" already have a mother !"); }
+		else { throw runtime_error(name +" already have mother !"); }
 	}
 	else{ throw runtime_error(name+" - not in the tree"); }
 }
